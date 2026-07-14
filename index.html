@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project VOICE - 고3 패널 모집 안내</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        indigo: {
+                            50: '#f0f3ff',
+                            100: '#e1e7fe',
+                            600: '#4f46e5',
+                            900: '#1e1b4b',
+                        },
+                        rose: {
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef2ff 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800">
+
+    <!-- Header / Navigation -->
+    <header class="w-full max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="bg-indigo-600 text-white font-black px-3 py-1 rounded-lg text-lg tracking-wider">VOICE</span>
+            <span class="text-xs font-bold text-slate-400 tracking-widest uppercase hidden sm:block">Project VOICE</span>
+        </div>
+        <div>
+            <span class="text-xs bg-indigo-100 text-indigo-600 font-bold px-3 py-1.5 rounded-full">3학년 단 1회 한정 조사</span>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 flex-grow flex flex-col justify-center py-6">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+            
+            <!-- Hero Banner -->
+            <div class="bg-indigo-900 text-white p-8 sm:p-12 text-center relative overflow-hidden">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-indigo-600 rounded-full blur-3xl opacity-30"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cyan-400 rounded-full blur-3xl opacity-20"></div>
+                
+                <span class="inline-block bg-indigo-800 text-cyan-300 font-bold text-xs sm:text-sm px-4 py-2 rounded-full mb-6 tracking-wide border border-indigo-700">
+                    🎓 고3 패널 단 1회 집중 모집
+                </span>
+                
+                <h1 class="text-2xl sm:text-4xl font-extrabold leading-tight mb-4 tracking-tight word-keep-all">
+                    졸업하기 전, 여러분의 <span class="text-yellow-300">진짜 목소리</span>를 들려주세요!
+                </h1>
+                
+                <p class="text-indigo-200 text-sm sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+                    고교학점제를 직접 경험한 3학년 여러분의 생생한 피드백이 대한민국 미래 교육 정책 수립의 핵심 자료가 됩니다.
+                </p>
+            </div>
+
+            <!-- Main Copy Alert -->
+            <div class="bg-indigo-50 border-y border-indigo-100 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 text-indigo-900">
+                    <span class="text-2xl floating">💡</span>
+                    <p class="text-sm sm:text-base font-semibold text-center sm:text-left">
+                        "3학년은 매 학기 참여할 필요 없이 <span class="text-indigo-600 font-bold">이번 딱 1회 설문</span>으로 끝납니다!"
+                    </p>
+                </div>
+                <!-- Countdown Timer -->
+                <div class="bg-white border border-indigo-200 rounded-xl px-4 py-2 flex items-center gap-2 shadow-sm shrink-0">
+                    <span class="text-xs font-bold text-slate-500 uppercase">모집 마감까지:</span>
+                    <span id="countdown" class="text-sm font-bold text-rose-600 tracking-wider">시간 계산 중...</span>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-10 space-y-8">
+                <!-- Info Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Card 1: 모집 안내 및 참여 횟수 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-indigo-200 transition-all">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 text-lg">
+                                <i class="fa-solid fa-clipboard-question"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900">3학년 맞춤 참여 정보</h3>
+                        </div>
+                        <ul class="space-y-3.5 text-slate-600 text-sm sm:text-base">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-indigo-600 mt-1 shrink-0"></i>
+                                <span><strong>모집 대상:</strong> 전국 고등학교 3학년 학생 <span class="text-rose-500 font-bold">(선착순 50명)</span></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-indigo-600 mt-1 shrink-0"></i>
+                                <span><strong>참여 횟수:</strong> 고3 재학 중 <span class="text-indigo-600 font-bold">단 1회만</span> 설문조사 진행</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-indigo-600 mt-1 shrink-0"></i>
+                                <span><strong>소요 시간:</strong> 회당 약 20분 내외의 간편한 모바일/PC 온라인 설문</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: 혜택 및 개인정보 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-indigo-200 transition-all">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 text-lg">
+                                <i class="fa-solid fa-gift"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900">참여 혜택 및 정보 보호</h3>
+                        </div>
+                        <ul class="space-y-3.5 text-slate-600 text-sm sm:text-base">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-rose-500 mt-1 shrink-0"></i>
+                                <span class="inline-flex flex-wrap items-center gap-1.5">
+                                    <strong>특별 혜택:</strong> 참여 시
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/GS25_bi_%282019%29.svg" alt="GS25" class="inline-block h-4 sm:h-[18px] align-middle">
+                                    <span class="text-rose-500 font-bold">2,000원 기프티콘 100% 즉시 증정</span>
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-rose-500 mt-1 shrink-0"></i>
+                                <span><strong>안심 보장:</strong> 개인정보 보호법 및 통계법 제33조에 근거, 모든 응답 무기명 통계 처리</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-rose-500 mt-1 shrink-0"></i>
+                                <span><strong>연구 기여:</strong> 정책 수립 기관에 현장의 실제 목소리 직접 전달</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Action Block (신청 및 참여방법) -->
+                <div class="bg-amber-50/50 rounded-2xl p-6 sm:p-8 border border-amber-200 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 flex-1 w-full">
+                        <h4 class="text-lg sm:text-xl font-bold text-amber-900 flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-amber-600"></i> 지금 바로 신청하기
+                        </h4>
+                        <div class="space-y-2.5 text-sm sm:text-base text-amber-950">
+                            <p class="flex items-center gap-2">
+                                <span class="w-24 font-bold text-amber-800 shrink-0">📅 신청 기간</span>
+                                <span class="bg-amber-100 px-2.5 py-0.5 rounded text-rose-600 font-bold">7월 14일(화) ~ 7월 15일(수) 단 이틀간</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <span class="w-24 font-bold text-amber-800 shrink-0">📋 설문 기간</span>
+                                <span>패널 선정자 대상 개별 안내 예정</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <span class="w-24 font-bold text-amber-800 shrink-0">👉 참여 방법</span>
+                                <span>아래 버튼 클릭 또는 QR코드 스캔!!</span>
+                            </p>
+                        </div>
+
+                        <!-- Live Applicant Progress -->
+                        <div id="progress-wrap" style="display:none;">
+                            <div class="w-full h-2.5 bg-amber-100 rounded-full overflow-hidden">
+                                <div id="progress-fill" class="h-full bg-gradient-to-r from-indigo-600 to-cyan-500 rounded-full transition-all duration-500" style="width:0%"></div>
+                            </div>
+                            <p id="progress-text" class="text-xs sm:text-sm font-bold text-indigo-700 mt-1.5"></p>
+                        </div>
+
+                        <a id="apply-cta" href="https://forms.gle/PE7CE84bx8W5KLwE9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-rose-500 text-white font-bold text-sm sm:text-base px-6 py-3 rounded-full shadow-lg shadow-indigo-200 hover:-translate-y-0.5 hover:shadow-xl transition-all">
+                            <i class="fa-solid fa-pen-to-square"></i> 고3 패널 신청하기
+                        </a>
+
+                        <p id="full-notice" style="display:none;" class="text-sm font-bold text-rose-600 bg-rose-50 border border-rose-200 rounded-xl px-4 py-2.5">
+                            🙏 선착순 50명 모집이 마감되었습니다. 관심 가져주셔서 감사합니다!
+                        </p>
+                    </div>
+                    <!-- QR Code Display Area -->
+                    <div class="flex flex-col items-center gap-2 shrink-0">
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200 shadow-md flex items-center justify-center w-36 h-36 relative overflow-hidden">
+                            <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fforms.gle%2FPE7CE84bx8W5KLwE9" alt="고3 패널 신청 QR코드" class="w-full h-full object-contain" width="150" height="150">
+                            <div id="qr-full" style="display:none;" class="absolute inset-0 bg-white/95 items-center justify-center text-rose-600 font-extrabold text-lg">마감</div>
+                        </div>
+                        <span id="qr-caption" class="text-xs font-bold text-amber-800 tracking-tight uppercase">QR코드 스캔하고 신청하기</span>
+                    </div>
+                </div>
+
+                <!-- Footer note inside the card -->
+                <p class="text-xs sm:text-sm text-slate-400 text-center flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-circle-info text-indigo-400"></i> 선착순 50명 모집 완료 시 신청 접수가 조기 종료됩니다.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-6 border-t border-slate-200 bg-white mt-12">
+        <p class="text-xs text-slate-500 font-medium">
+            © 2026 고교학점제 성과 분석 종단연구 기획단. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- Interactive Countdown Timer Script -->
+    <script>
+        function updateTimer() {
+            // Target Date: 2026-07-15 23:59:59 (Since current environment context is 2026-07-14)
+            const targetDate = new Date("2026-07-15T23:59:59").getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const countdownElement = document.getElementById("countdown");
+
+            if (difference < 0) {
+                countdownElement.innerHTML = "모집 마감";
+                countdownElement.className = "text-sm font-bold text-slate-400 tracking-wider";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            let timerString = "";
+            if (days > 0) timerString += `${days}일 `;
+            timerString += `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            countdownElement.innerHTML = timerString;
+        }
+
+        // Run immediately and update every second
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
+
+    <!-- Live Applicant Count / Auto-close Script -->
+    <script>
+    (function () {
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHpBKnbLQG98kK_1eJ5Lba3LGktWCd5TexqqcnV75_62lmP-tzslHAN3HKUATpy1A7/exec';
+        var RECRUIT_LIMIT = 50;
+
+        fetch(SCRIPT_URL)
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                var count = data && typeof data.count === 'number' ? data.count : null;
+                if (count === null) return;
+
+                var pct = Math.max(0, Math.min(100, Math.round((count / RECRUIT_LIMIT) * 100)));
+                var progressWrap = document.getElementById('progress-wrap');
+                var progressText = document.getElementById('progress-text');
+
+                document.getElementById('progress-fill').style.width = pct + '%';
+                progressWrap.style.display = 'block';
+
+                if (count >= RECRUIT_LIMIT) {
+                    progressText.textContent = '🙏 선착순 ' + RECRUIT_LIMIT + '명 신청이 마감되었습니다';
+                    progressText.classList.add('text-rose-600');
+                } else {
+                    progressText.textContent = '🔥 현재 ' + count + '명 / ' + RECRUIT_LIMIT + '명 신청 완료 (' + (RECRUIT_LIMIT - count) + '명 남음)';
+                }
+
+                if (count < RECRUIT_LIMIT) return;
+
+                var cta = document.getElementById('apply-cta');
+                cta.classList.add('opacity-50', 'grayscale', 'pointer-events-none');
+                cta.removeAttribute('href');
+                cta.setAttribute('aria-disabled', 'true');
+                cta.innerHTML = '<i class="fa-solid fa-lock"></i> 신청이 마감되었습니다';
+
+                document.getElementById('full-notice').style.display = 'block';
+
+                document.getElementById('qr-img').style.visibility = 'hidden';
+                document.getElementById('qr-full').style.display = 'flex';
+                document.getElementById('qr-caption').textContent = '선착순 50명 마감되었습니다';
+            })
+            .catch(function () {
+                // 응답 수를 확인하지 못하면 기존 신청 링크를 그대로 보여줍니다.
+            });
+    })();
+    </script>
+</body>
+</html>
